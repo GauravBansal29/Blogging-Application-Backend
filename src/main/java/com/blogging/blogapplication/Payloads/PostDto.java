@@ -1,11 +1,13 @@
 package com.blogging.blogapplication.Payloads;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.blogging.blogapplication.Entities.Category;
+import com.blogging.blogapplication.Entities.Comment;
 import com.blogging.blogapplication.Entities.User;
 
 import lombok.AllArgsConstructor;
@@ -38,5 +40,7 @@ public class PostDto {
 
     // we will not get but will have to return this
     private CategoryDto category;
+
+    private List<CommentDto> comments;
 
 }
