@@ -1,12 +1,10 @@
 package com.blogging.blogapplication.Entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
-import javax.persistence.GeneratedValue;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,6 +44,9 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Comment> comments;
 
     // will also have a one to many for comments -> will make it later
 }

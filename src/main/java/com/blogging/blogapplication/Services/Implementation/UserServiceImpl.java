@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(userdto.getPassword());
         user.setAbout(userdto.getAbout());
 
-        User savedUser = userRepo.save(user);
+        User savedUser = userRepo.save(user); // we have not changed the id and id are unique so updated user will come
 
         return userTodto(savedUser);
     }
