@@ -22,6 +22,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(message, null, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<String> resourceNotFoundException(NotFoundException ex) {
+        String message = ex.getMessage();
+        return new ResponseEntity<>(message, null, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> validationfailedException(MethodArgumentNotValidException ex) {
 
