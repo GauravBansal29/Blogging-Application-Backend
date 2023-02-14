@@ -11,6 +11,8 @@ import com.blogging.blogapplication.Payloads.UserDto;
 
 public interface UserService {
 
+    UserDto registerUser(UserDto user);
+
     UserDto createUser(UserDto user);
 
     UserDto updateUser(UserDto user, Long userid);

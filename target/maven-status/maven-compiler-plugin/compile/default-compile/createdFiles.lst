@@ -12,7 +12,9 @@ com\blogging\blogapplication\Config\SecurityConfig.class
 com\blogging\blogapplication\Exceptions\NotFoundException.class
 com\blogging\blogapplication\Payloads\PostPageResponse.class
 com\blogging\blogapplication\Entities\Role.class
+com\blogging\blogapplication\Repositories\RoleRepository.class
 com\blogging\blogapplication\Services\Implementation\CommentServiceImpl.class
+com\blogging\blogapplication\Payloads\RoleDto.class
 com\blogging\blogapplication\Payloads\JwtAuthReqDto.class
 com\blogging\blogapplication\Exceptions\ForbiddenException.class
 com\blogging\blogapplication\Exceptions\ResourceNotFoundException.class

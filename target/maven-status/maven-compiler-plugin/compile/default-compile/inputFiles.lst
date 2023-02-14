@@ -6,6 +6,7 @@ C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-applic
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Entities\User.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Services\CategoryService.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Exceptions\GlobalExceptionHandler.java
+C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Repositories\RoleRepository.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Security\CustomUserDetailService.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Controllers\AuthController.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Exceptions\ResourceNotFoundException.java
@@ -27,6 +28,7 @@ C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-applic
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Controllers\CategoryController.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Services\PostService.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Payloads\JwtAuthReqDto.java
+C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Payloads\RoleDto.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Entities\Role.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Security\JwtAuthResponse.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Security\UserOnlyRequest.java

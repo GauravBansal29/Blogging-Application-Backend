@@ -1,11 +1,12 @@
 package com.blogging.blogapplication.Payloads;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -35,5 +36,7 @@ public class UserDto {
     private String about;
 
     private List<CommentDto> comments;
+
+    private Set<RoleDto> roles = new HashSet<>();
 
 }

@@ -18,7 +18,9 @@ import com.blogging.blogapplication.Exceptions.NotFoundException;
 import com.blogging.blogapplication.Exceptions.ResourceNotFoundException;
 import com.blogging.blogapplication.Payloads.JwtAuthReqDto;
 import com.blogging.blogapplication.Payloads.JwtAuthResDto;
+import com.blogging.blogapplication.Payloads.UserDto;
 import com.blogging.blogapplication.Security.JwtTokenHelper;
+import com.blogging.blogapplication.Services.UserService;
 
 @RestController
 @RequestMapping("/api/auth/")
@@ -26,6 +28,9 @@ public class AuthController {
 
     @Autowired
     private JwtTokenHelper jwtTokenHelper;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -57,5 +62,12 @@ public class AuthController {
             throw new NotFoundException("Invalid username or password");
 
         }
+    }
+
+    // register user
+    @PostMapping("/register")
+    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto) {
+        UserDto registeredUser = this.userService.registerUser(userDto);
+        return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 }
