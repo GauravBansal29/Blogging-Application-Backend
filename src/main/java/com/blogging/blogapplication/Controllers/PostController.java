@@ -3,12 +3,15 @@ package com.blogging.blogapplication.Controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.blogging.blogapplication.Payloads.PostDto;
 import com.blogging.blogapplication.Payloads.PostPageResponse;
+import com.blogging.blogapplication.Security.UserOnlyRequest;
 import com.blogging.blogapplication.Services.PostService;
 import com.blogging.blogapplication.Utils.FileUploadHelper;
 
@@ -31,12 +35,17 @@ public class PostController {
     PostService postService;
 
     @Autowired
+    private UserOnlyRequest userOnlyRequest;
+
+    @Autowired
     FileUploadHelper fileUploadHelper;
 
     // create post
     @PostMapping("/{userid}/{categoryid}")
     public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto postDto, @PathVariable Long userid,
-            @PathVariable Long categoryid) {
+            @PathVariable Long categoryid, @RequestHeader(name = "Authorization") String token) {
+
+        this.userOnlyRequest.allow(token, userid);
         PostDto createdPost = postService.createPost(postDto, userid, categoryid);
         return new ResponseEntity<>(createdPost, null, HttpStatus.CREATED);
     }
@@ -64,6 +73,7 @@ public class PostController {
     }
 
     // get all posts
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/")
     public ResponseEntity<PostPageResponse> getAllPosts(
             @RequestParam(value = "pageNumber", defaultValue = "1", required = false) Integer pageNumber,
@@ -82,16 +92,27 @@ public class PostController {
     }
 
     // update post
-    @PutMapping("/{id}")
-    public ResponseEntity<PostDto> updatePost(@Valid @RequestBody PostDto postDto, @PathVariable Long id) {
-        PostDto updatePost = postService.updatePost(postDto, id);
+    @PutMapping("/{id}/user/{userid}")
+    public ResponseEntity<PostDto> updatePost(@Valid @RequestBody PostDto postDto, @PathVariable Long id,
+            @PathVariable Long userid,
+            @RequestHeader(name = "Authorization") String token) {
+
+        this.userOnlyRequest.allow(token, userid);
+
+        PostDto updatePost = postService.updatePost(postDto, id, userid);
         return new ResponseEntity<>(updatePost, null, HttpStatus.OK);
     }
 
     // delete post
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePost(@PathVariable Long id) {
-        postService.deletePost(id);
+    @DeleteMapping("/{id}/user/{userid}")
+    public ResponseEntity<String> deletePost(@PathVariable Long id, @PathVariable Long userid,
+            @RequestHeader(name = "Authorization") String token,
+            SecurityContextHolderAwareRequestWrapper screq) {
+
+        if (!screq.isUserInRole("ROLE_ADMIN"))
+            this.userOnlyRequest.allow(token, userid);
+
+        postService.deletePost(id, userid);
         return new ResponseEntity<>("Post has been deleted successfully", null, HttpStatus.OK);
     }
 

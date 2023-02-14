@@ -23,9 +23,15 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<String> resourceNotFoundException(NotFoundException ex) {
+    public ResponseEntity<String> notFoundException(NotFoundException ex) {
         String message = ex.getMessage();
         return new ResponseEntity<>(message, null, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<String> forbiddenException(ForbiddenException ex) {
+        String message = ex.getMessage();
+        return new ResponseEntity<>(message, null, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

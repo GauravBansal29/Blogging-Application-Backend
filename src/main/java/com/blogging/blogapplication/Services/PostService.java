@@ -12,10 +12,10 @@ public interface PostService {
     PostDto createPost(PostDto postDto, Long userid, Long categoryid);
 
     // delete post
-    void deletePost(Long postid);
+    void deletePost(Long postid, Long userid);
 
     // update post
-    PostDto updatePost(PostDto postDto, Long postid);
+    PostDto updatePost(PostDto postDto, Long postid, Long userid);
 
     // get post by id
     PostDto getPostById(Long postid);

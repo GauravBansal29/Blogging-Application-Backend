@@ -5,9 +5,9 @@ import java.util.*;
 
 public interface CommentService {
 
-    CommentDto createComment(CommentDto comment, Long postid);
+    CommentDto createComment(CommentDto comment, Long postid, Long userid);
 
-    void deleteComment(Long commentid);
+    void deleteComment(Long commentid, Long userid);
 
     List<CommentDto> getAllUserComments(Long userid);
 

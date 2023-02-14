@@ -1,6 +1,7 @@
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Services\CommentService.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Security\JwtAuthenticationFilter.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Controllers\PostController.java
+C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Exceptions\ForbiddenException.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Controllers\UserController.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Entities\User.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Services\CategoryService.java
@@ -28,6 +29,7 @@ C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-applic
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Payloads\JwtAuthReqDto.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Entities\Role.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Security\JwtAuthResponse.java
+C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Security\UserOnlyRequest.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Controllers\CommentController.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Services\Implementation\UserServiceImpl.java
 C:\Users\Gaurav\Desktop\CS WORK\Spring-Boot Blogging Website Backend\blog-application\src\main\java\com\blogging\blogapplication\Payloads\CommentDto.java

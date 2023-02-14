@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.blogging.blogapplication.Entities.*;
+import com.blogging.blogapplication.Exceptions.ForbiddenException;
 import com.blogging.blogapplication.Exceptions.ResourceNotFoundException;
 import com.blogging.blogapplication.Payloads.CommentDto;
 import com.blogging.blogapplication.Repositories.CommentRepository;
@@ -32,13 +33,15 @@ public class CommentServiceImpl implements CommentService {
     ModelMapper modelMapper;
 
     @Override
-    public CommentDto createComment(CommentDto comment, Long postid) {
+    public CommentDto createComment(CommentDto comment, Long postid, Long userid) {
 
         Post getPost = postRepo.findById(postid).orElseThrow(() -> {
             return new ResourceNotFoundException("Post", "id", postid);
         });
 
-        User getUser = getPost.getUser();
+        User getUser = userRepo.findById(userid).orElseThrow(() -> {
+            return new ResourceNotFoundException("User", "id", userid);
+        });
 
         Comment mycomment = modelMapper.map(comment, Comment.class);
 
@@ -53,11 +56,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void deleteComment(Long commentid) {
+    public void deleteComment(Long commentid, Long userid) {
 
         Comment comm = commentRepo.findById(commentid).orElseThrow(() -> {
             return new ResourceNotFoundException("comment", "id", commentid);
         });
+
+        if (comm.getUser().getId() != userid)
+            throw new ForbiddenException("Comment userid mismatch");
 
         commentRepo.delete(comm);
 

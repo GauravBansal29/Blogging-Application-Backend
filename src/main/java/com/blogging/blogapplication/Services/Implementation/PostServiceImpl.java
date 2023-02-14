@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.blogging.blogapplication.Entities.Category;
 import com.blogging.blogapplication.Entities.Post;
 import com.blogging.blogapplication.Entities.User;
+import com.blogging.blogapplication.Exceptions.ForbiddenException;
 import com.blogging.blogapplication.Exceptions.ResourceNotFoundException;
 import com.blogging.blogapplication.Payloads.PostDto;
 import com.blogging.blogapplication.Payloads.PostPageResponse;
@@ -59,21 +60,26 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void deletePost(Long postid) {
+    public void deletePost(Long postid, Long userid) {
         Post findPost = postRepo.findById(postid).orElseThrow(() -> {
             return new ResourceNotFoundException("Post", "id", postid);
         });
-
-        postRepo.delete(findPost);
+        if (findPost.getUser().getId() != userid) {
+            System.out.println(findPost.getUser().getId());
+            throw new ForbiddenException("You can't delete this post");
+        } else
+            postRepo.delete(findPost);
     }
 
     @Override
-    public PostDto updatePost(PostDto postDto, Long postid) {
+    public PostDto updatePost(PostDto postDto, Long postid, Long userid) {
 
         Post findPost = postRepo.findById(postid).orElseThrow(() -> {
             return new ResourceNotFoundException("Post", "id", postid);
         });
 
+        if (findPost.getUser().getId() != userid)
+            throw new ForbiddenException("You can update only your own posts");
         findPost.setTitle(postDto.getTitle());
         findPost.setContent(postDto.getContent());
         findPost.setImage(postDto.getImage());

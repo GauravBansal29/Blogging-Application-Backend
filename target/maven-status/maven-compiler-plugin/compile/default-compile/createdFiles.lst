@@ -14,6 +14,7 @@ com\blogging\blogapplication\Payloads\PostPageResponse.class
 com\blogging\blogapplication\Entities\Role.class
 com\blogging\blogapplication\Services\Implementation\CommentServiceImpl.class
 com\blogging\blogapplication\Payloads\JwtAuthReqDto.class
+com\blogging\blogapplication\Exceptions\ForbiddenException.class
 com\blogging\blogapplication\Exceptions\ResourceNotFoundException.class
 com\blogging\blogapplication\Repositories\CommentRepository.class
 com\blogging\blogapplication\Security\CustomUserDetailService.class
@@ -30,6 +31,7 @@ com\blogging\blogapplication\Services\CategoryService.class
 com\blogging\blogapplication\Services\CommentService.class
 com\blogging\blogapplication\Repositories\PostRepository.class
 com\blogging\blogapplication\Payloads\JwtAuthResDto.class
+com\blogging\blogapplication\Security\UserOnlyRequest.class
 com\blogging\blogapplication\Security\JwtTokenHelper.class
 com\blogging\blogapplication\Controllers\UserController.class
 com\blogging\blogapplication\Payloads\UserDto.class
